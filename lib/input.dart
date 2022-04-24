@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bmi_2/circled_button.dart';
 import 'package:flutter_bmi_2/model/bmi.dart';
 import 'package:flutter_bmi_2/result.dart';
 import 'package:flutter_bmi_2/rumus_BMI.dart';
@@ -159,13 +160,15 @@ class _State extends State<InputPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    OutlinedButton(
+                    CircleButton(
+                      icon: Icons.remove,
+                      color: Colors.redAccent,
                       onPressed: () {
                         if (_currentWeightValue < 2) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: const Text(
-                                  'terlalu kurus, jangan mirip raden coy'),
+                                  'terlalu kurus, jangan lupa dikasih makan ya lambungnya'),
                             ),
                           );
                         } else {
@@ -173,18 +176,6 @@ class _State extends State<InputPage> {
                           setState(() {});
                         }
                       },
-                      child: Icon(
-                        Icons.remove,
-                        size: 30,
-                      ),
-                      style: ButtonStyle(
-                        shape: MaterialStateProperty.all(CircleBorder()),
-                        fixedSize: MaterialStateProperty.all(
-                          Size.fromRadius(30),
-                        ),
-                        foregroundColor:
-                            MaterialStateProperty.all(Colors.redAccent),
-                      ),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -209,22 +200,14 @@ class _State extends State<InputPage> {
                         ),
                       ],
                     ),
-                    OutlinedButton(
+                    CircleButton(
+                      icon: Icons.add,
+                      color: Colors.green,
                       onPressed: () {
                         _currentWeightValue++;
                         setState(() {});
                       },
-                      child: Icon(
-                        Icons.add,
-                        size: 30,
-                      ),
-                      style: ButtonStyle(
-                        shape: MaterialStateProperty.all(CircleBorder()),
-                        fixedSize: MaterialStateProperty.all(
-                          Size.fromRadius(30),
-                        ),
-                      ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -242,8 +225,10 @@ class _State extends State<InputPage> {
           onPressed: () {
             double total = RumusBMI.kalkulator_BMI(
                 _currentSliderValue.toInt(), _currentWeightValue.toInt());
+
             BMI hasil = RumusBMI.kategori_BMI(_currentGenderValue, total);
             bmis.add(hasil);
+
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => Result(

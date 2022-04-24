@@ -5,7 +5,7 @@ class RumusBMI {
   static List<String> message = [
     "Makan lebih ya,\n itu banyak takjilan di jalan yang murah",
     "Mantabs,\n lanjutkan dan tahankan yang anda lakukan",
-    "Ciee bentar lagi masuk Obese,\n semangat ya ke sanannya atau lari dari sana",
+    "Ciee bentar lagi masuk Obese,\n semangat ya ke sanannya atau lari dari sananya",
     "Welcome to obesity,\n disarankan jangan lama-lama disini ya"
   ];
 
@@ -45,7 +45,7 @@ class RumusBMI {
       } else {
         bmi.category = "Obese";
         bmi.message = message[3];
-      }
+      }//Klasifikasi kategori BMI mengikuti data dari Kemkes.go.id
     }
 
     return bmi;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bmi_2/model/bmi.dart';
 
 class Result extends StatelessWidget {
-  final BMI bmi;
+  final BMI bmi; //BMI = class, bmi = variabel
   const Result({Key? key, required this.bmi}) : super(key: key);
 
   @override
